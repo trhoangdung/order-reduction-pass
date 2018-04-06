@@ -1,0 +1,50 @@
+-----------The information of the errors between original system and reduced system------------ 
+
+--------------ERROR 1-------------- 
+
+e1 theory bound: 0.00042898
+
+e1 simulation bound: 
+
+e2 theo bound: 0.0078997
+
+e2 simulation bound: 1.6817e-08
+
+total error theory bound: 0.0083287
+
+total error simulation bound: 
+
+total error mixed bound: 0.000429
+
+--------------ERROR 2-------------- 
+
+e1 theory bound: 0.00026741
+
+e1 simulation bound: 
+
+e2 theo bound: 0.0078997
+
+e2 simulation bound: 5.9303e-08
+
+total error theory bound: 0.0081671
+
+total error simulation bound: 
+
+total error mixed bound: 0.00026746
+
+--------------ERROR 3-------------- 
+
+e1 theory bound: 0.0002636
+
+e1 simulation bound: 
+
+e2 theo bound: 0.0078997
+
+e2 simulation bound: 1.9759e-08
+
+total error theory bound: 0.0081633
+
+total error simulation bound: 
+
+total error mixed bound: 0.00026362
+

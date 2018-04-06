@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="core_component">
+    <param name="x1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x4" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x5" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x6" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x7" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="x8" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="u1" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="u2" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="stoptime" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="t_local" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="X1_01" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="X5_01" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="X1_02" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="X5_02" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="t_global" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="1" name="Mode1" x="370.0" y="272.0" width="306.0" height="342.0">
+      <invariant>t_local &lt;= 0.1 &amp; t_global &lt;= stoptime &amp; y1 == x1 &amp; y2 == x1 - x5</invariant>
+      <flow>x1' == x2
+ &amp;x2' == 8487.2*x3 - 1.0865*x2
+ &amp;x3' == - 2592.1*x1 - 21.119*x2 - 698.91*x3 - 141399.0*x4
+ &amp;x4' == x1 - 1.0*u1
+ &amp;x5' == x6
+ &amp;x6' == 8487.2*x7 - 1.0865*x6
+ &amp;x7' == - 2592.1*x5 - 21.119*x6 - 698.91*x7 - 141399.0*x8
+ &amp;x8' == x5 - 1.0*u2
+&amp; t_local' ==1
+&amp; t_global' ==1</flow>
+    </location>
+    <location id="2" name="Mode2" x="794.0" y="273.0" width="326.0" height="338.0">
+      <invariant>t_local &lt;= 0.15 &amp; t_global &lt;= stoptime &amp; y1 == x1 &amp; y2 == x1 - x5</invariant>
+      <flow>x1' == x2
+ &amp;x2' == 8487.2*x3 - 1.0865*x2
+ &amp;x3' == - 2592.1*x1 - 21.119*x2 - 698.91*x3 - 141399.0*x4
+ &amp;x4' == u1 + x1
+ &amp;x5' == x6
+ &amp;x6' == 8487.2*x7 - 1.0865*x6
+ &amp;x7' == - 2592.1*x5 - 21.119*x6 - 698.91*x7 - 141399.0*x8
+ &amp;x8' == u2 + x5
+&amp; t_local' ==1
+&amp; t_global' ==1</flow>
+    </location>
+    <transition source="1" target="2">
+      <guard>t_local &gt;= 0.1</guard>
+      <assignment>t_local := 0  
+&amp; x1 := X1_02 
+&amp; x2 := 0 
+&amp; x3 := 0 
+&amp; x4 := 0 
+&amp; x5 := X5_02 
+&amp; x6 := 0 
+&amp; x7 := 0 
+&amp; x8 := 0
+&amp; y1 := X1_02
+&amp; y2 := X1_02 - X5_02</assignment>
+      <labelposition x="-22.0" y="36.0" />
+      <middlepoint x="587.0" y="45.5" />
+    </transition>
+    <transition source="2" target="1">
+      <guard>t_local &gt;= 0.15</guard>
+      <assignment>t_local := 0  
+&amp; x1 := X1_01 
+&amp; x2 := 0 
+&amp; x3 := 0 
+&amp; x4 := 0 
+&amp; x5 := X5_01 
+&amp; x6 := 0 
+&amp; x7 := 0 
+&amp; x8 := 0
+&amp; y1 := X1_01
+&amp; y2 := X1_01 - X5_01</assignment>
+      <labelposition x="-20.0" y="16.0" />
+      <middlepoint x="576.0" y="491.5" />
+    </transition>
+  </component>
+  <component id="sys">
+    <param name="x1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x4" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x5" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x6" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x7" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="x8" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="u1" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="u2" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="stoptime" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="t_local" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="X1_01" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="X5_01" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="X1_02" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="X5_02" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="t_global" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="core_component" as="core_component_1" x="270.0" y="126.0">
+      <map key="x1">x1</map>
+      <map key="x2">x2</map>
+      <map key="x3">x3</map>
+      <map key="x4">x4</map>
+      <map key="x5">x5</map>
+      <map key="x6">x6</map>
+      <map key="x7">x7</map>
+      <map key="x8">x8</map>
+      <map key="u1">u1</map>
+      <map key="u2">u2</map>
+      <map key="stoptime">stoptime</map>
+      <map key="t_local">t_local</map>
+      <map key="X1_01">X1_01</map>
+      <map key="X5_01">X5_01</map>
+      <map key="X1_02">X1_02</map>
+      <map key="X5_02">X5_02</map>
+      <map key="t_global">t_global</map>
+      <map key="y1">y1</map>
+      <map key="y2">y2</map>
+    </bind>
+  </component>
+</sspaceex>
+

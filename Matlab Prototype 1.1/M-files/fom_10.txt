@@ -1,0 +1,32 @@
+-----------The information of the errors between original system and reduced system------------ 
+
+--------------ERROR 1-------------- 
+
+e1 theory bound: 1.2915
+
+e1 simulation bound: 0
+
+e1 optimized bound: 0
+
+e2 theoretical bound: 2.2013
+
+e2 simulation bound: 0.10164
+
+e2 optimized bound: 0
+
+total error theory bound: 3.4927
+
+total error simulation bound: 0.10164
+
+total error optimization bound: 0
+
+total error mixed bound: 0.10164
+
+computing time of theoretical bound: 0.026069
+
+computing time of simulation bound: 28.2073
+
+computing time of optimization bound: 0
+
+computing time of mixed bound: 28.2073
+
